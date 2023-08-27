@@ -559,6 +559,12 @@ poster.setup(bot)
 help.setup(bot)
 devilfruit.setup(bot)
 
-my_secret = os.environ['TOKEN']
-bot.run(my_secret)
+import configparser
+
+config = configparser.ConfigParser()
+config.read('config.ini')  # Use the appropriate file name
+
+bot_token = config['credentials']['bot_token']
+
+bot.run(bot_token)
 keep_alive()
